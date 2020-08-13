@@ -17,10 +17,6 @@ namespace MatrixJam.Team14
         [SerializeField] public GenericRandomSFX TunnelBump;
         [SerializeField] public GenericRandomSFX Lose;
 
-        private void Update()
-        {
-
-        }
 
 
         public void PlaySFX(TrainMove move)
