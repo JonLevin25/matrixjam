@@ -34,16 +34,18 @@ namespace MatrixJam.Team14
         public IEnumerable<Vector3> GetAllBeatPositions(Transform startAndDirection)
             => Enumerable
                 .Range(0, Mathf.FloorToInt(TotalBeats))
-                .Select(beatNum => GetPosition(startAndDirection, beatNum));
+                .Select(beatNum => BeatsToPosition(startAndDirection, beatNum));
 
+        public float BeatsToSeconds(float beats) => beats / BeatPerSec;
+        public float SecondsToBeats(float seconds) => seconds * BeatPerSec;
 
         public Vector3 GetLastPosition(Transform startAndDirection) 
-            => GetPosition(startAndDirection, TotalBeats);
+            => BeatsToPosition(startAndDirection, TotalBeats);
         
-        public Vector3 GetPosition(Transform startAndDirection, float beatNum, Vector3 offset) 
-            => offset + GetPosition(startAndDirection, beatNum);
+        public Vector3 BeatsToPosition(Transform startAndDirection, float beatNum, Vector3 offset) 
+            => offset + BeatsToPosition(startAndDirection, beatNum);
 
-        public Vector3 GetPosition(Transform startAndDirection, float beatNum)
+        public Vector3 BeatsToPosition(Transform startAndDirection, float beatNum)
         {
             var z = beatNum * zPerBeat;
             return startAndDirection.position + startAndDirection.forward * z;

@@ -1,0 +1,410 @@
+fileFormatVersion: 2
+guid: 83beea111354cc84299a9c4d7a207652
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8132821389448211295
+    second: Panda_Spritesheet_0
+  - first:
+      213: 826863609072997713
+    second: Panda_Spritesheet_1
+  - first:
+      213: -2227454567383923323
+    second: Panda_Spritesheet_2
+  - first:
+      213: -1292092788558974462
+    second: Panda_Spritesheet_3
+  - first:
+      213: 8366093304035482544
+    second: Panda_Spritesheet_4
+  - first:
+      213: -8767655909735495135
+    second: Panda_Spritesheet_5
+  - first:
+      213: 7289790407454324249
+    second: Panda_Spritesheet_6
+  - first:
+      213: -7959128550940317594
+    second: Panda_Spritesheet_7
+  - first:
+      213: -6291618660646425244
+    second: Panda_Spritesheet_8
+  - first:
+      213: 1433533056638744916
+    second: Panda_Spritesheet_9
+  - first:
+      213: 1955359879903855791
+    second: Panda_Spritesheet_10
+  - first:
+      213: -1280158560972886769
+    second: Panda_Spritesheet_11
+  - first:
+      213: 9160859772422561955
+    second: Panda_Spritesheet_12
+  - first:
+      213: 3799553567240824389
+    second: Panda_Spritesheet_13
+  - first:
+      213: -6507750962567042660
+    second: Panda_Spritesheet_14
+  - first:
+      213: 8390648586972027512
+    second: Panda_Spritesheet_15
+  - first:
+      213: 4669424562150586300
+    second: Panda_Spritesheet_16
+  - first:
+      213: -9075705050716337115
+    second: Panda_Spritesheet_17
+  - first:
+      213: 6078050648383668500
+    second: Panda_Spritesheet_18
+  - first:
+      213: 7123205593386191962
+    second: Panda_Spritesheet_19
+  - first:
+      213: -7905320389636620940
+    second: Panda_Spritesheet_20
+  - first:
+      213: -2965195223552461025
+    second: Panda_Spritesheet_21
+  - first:
+      213: -9192283945861650874
+    second: Panda_Spritesheet_22
+  - first:
+      213: 1186644705519428410
+    second: Panda_Spritesheet_23
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Panda_Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 757
+        width: 301
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5b62c3d6f59dd070800000000000000
+      internalID: 8132821389448211295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Panda_Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 757
+        width: 292
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1555e70521c997b00800000000000000
+      internalID: 826863609072997713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Panda_Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 757
+        width: 309
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58582cd5fdd7611e0800000000000000
+      internalID: -2227454567383923323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Panda_Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 752
+        width: 313
+        height: 296
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20239116470911ee0800000000000000
+      internalID: -1292092788558974462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Panda_Spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 383
+        width: 309
+        height: 318
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bb1fc8d8855a1470800000000000000
+      internalID: 8366093304035482544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Panda_Spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 383
+        width: 312
+        height: 347
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12a8c533767035680800000000000000
+      internalID: -8767655909735495135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Panda_Spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 383
+        width: 311
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9167d5ba0c98a2560800000000000000
+      internalID: 7289790407454324249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Panda_Spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 383
+        width: 301
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 668688f80ce7b8190800000000000000
+      internalID: -7959128550940317594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Panda_Spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 9
+        width: 317
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46d63fd992eafa8a0800000000000000
+      internalID: -6291618660646425244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Panda_Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 11
+        width: 336
+        height: 356
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4597bb648bee4e310800000000000000
+      internalID: 1433533056638744916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

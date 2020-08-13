@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 706f5a1490ce5404dbefce103b1e232a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pickUpSFX: {instanceID: 0}
+  - drownSFX: {instanceID: 0}
+  - unlockSFX: {instanceID: 0}
+  - solvePuzzleSFX: {instanceID: 0}
+  - lightbulbSFX: {instanceID: 0}
+  - keyCodeSFX: {instanceID: 0}
+  - pressurePlateSFX: {instanceID: 0}
+  - CollisionSFX: {fileID: 8300000, guid: b91b056ed576b41d9b0c4531c6e4a33d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -83,6 +83,7 @@ namespace MatrixJam.Team14
 
         private void CreateRandomObstacle()
         {
+#if UNITY_EDITOR
             if (obstacleTypes.Length == 0)
             {
                 Debug.LogError($"No Random Obstacles Configured! ({name})");
@@ -93,6 +94,7 @@ namespace MatrixJam.Team14
             
             var go = (GameObject) PrefabUtility.InstantiatePrefab(randObstacle, obstacleHolder);
             go.transform.localPosition = Vector3.zero;
+#endif
         }
     }
 }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d4ab635a26456488a72f468e3e9249, type: 3}
+  m_Name: Guu
+  m_EditorClassIdentifier: 
+  IngridientOrder: 
+  ProductPrefab: {fileID: 8950084894279732641, guid: 0eb7b01017e414f48b89d72d23eb9f23,
+    type: 3}
+  RecipeIcon: {fileID: 0}
+  Axis: {x: 0, y: 0, z: 0}
+  Steps: {x: 0, y: -2.14, z: -1.74}

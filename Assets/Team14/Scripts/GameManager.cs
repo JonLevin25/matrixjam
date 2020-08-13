@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MatrixJam.Team14
 {
-    using MatrixJam.Team;
 #if UNITY_EDITOR
     using UnityEditor;
 
@@ -29,7 +28,11 @@ namespace MatrixJam.Team14
     public class GameManager : MonoBehaviour
     {
         public static event Action ResetEvent;
+        public static event Action<bool> GameFinishedEvent;
         
+        [SerializeField] private KeyCode[] secretRestartCombo;
+        [SerializeField] private int debugStartBeatsOffset;
+        [Space]
         [SerializeField] private int startLives;
         [SerializeField] private AudioManager audioManager;
         [SerializeField] public SFXmanager sfxManager;
@@ -76,7 +79,7 @@ namespace MatrixJam.Team14
 
         private void Start()
         {
-            audioManager.Restart();     
+            audioManager.Restart(debugStartBeatsOffset);
         }
 
         public void OnValidate()
@@ -86,10 +89,17 @@ namespace MatrixJam.Team14
 
         private void Update()
         {
+            if (secretRestartCombo.Length > 0 && secretRestartCombo.All(Input.GetKey)) RestartLevel();
             if (reachedEnd) return;
             
             var pos = audioManager.GetCurrPosition(startAndDirection);
             character.position = pos;
+        }
+
+        private void RestartLevel()
+        {
+            var sceneName = UnityEngine.SceneManagement.SceneManager.GetSceneAt(0).name;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
         }
 
         private void OnDestroy()
@@ -112,6 +122,7 @@ namespace MatrixJam.Team14
         {
             reachedEnd = true;
             youWin.SetActive(true);
+            GameFinishedEvent?.Invoke(true);
             
             MatrixExit(true, 8);
             Debug.Log("Success! Last Track Finished!");
@@ -164,6 +175,7 @@ namespace MatrixJam.Team14
             Debug.Log("GAME OVERRR");
             sfxManager.Lose.PlayRandom();
             gameOver.SetActive(true);
+            GameFinishedEvent?.Invoke(false);
             MatrixExit(false, 8f);
         }
 

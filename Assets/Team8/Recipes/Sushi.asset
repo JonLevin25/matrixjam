@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d4ab635a26456488a72f468e3e9249, type: 3}
+  m_Name: Sushi
+  m_EditorClassIdentifier: 
+  IngridientOrder: 000000000700000001000000
+  ProductPrefab: {fileID: 5302766558802123677, guid: b34a90759827c0249b1c64c3b31f008d,
+    type: 3}
+  RecipeIcon: {fileID: 2800000, guid: e29d000c3e92f2b4ba2478aac418f1ad, type: 3}
+  Axis: {x: 1, y: 1, z: 0}
+  Steps: {x: -3.225, y: -2.14, z: -1.74}

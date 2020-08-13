@@ -1,0 +1,341 @@
+fileFormatVersion: 2
+guid: 4a2c7063b4a27b048ba7e2f434f5f159
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4161951349954366921
+    second: Ninja_Spritesheet_0
+  - first:
+      213: 5406568476321206565
+    second: Ninja_Spritesheet_1
+  - first:
+      213: -7926194987836774188
+    second: Ninja_Spritesheet_2
+  - first:
+      213: -3016739341559948103
+    second: Ninja_Spritesheet_3
+  - first:
+      213: -1349299732965878561
+    second: Ninja_Spritesheet_4
+  - first:
+      213: 2182451018684350803
+    second: Ninja_Spritesheet_5
+  - first:
+      213: -3448162477465935426
+    second: Ninja_Spritesheet_6
+  - first:
+      213: 4221696483563441187
+    second: Ninja_Spritesheet_7
+  - first:
+      213: 2247806728083559636
+    second: Ninja_Spritesheet_8
+  - first:
+      213: -8996757187535097465
+    second: Ninja_Spritesheet_9
+  - first:
+      213: -3618913637064625354
+    second: Ninja_Spritesheet_10
+  - first:
+      213: -988251111824660644
+    second: Ninja_Spritesheet_11
+  - first:
+      213: -1985773943640884041
+    second: Ninja_Spritesheet_12
+  - first:
+      213: 8123663276396400420
+    second: Ninja_Spritesheet_13
+  - first:
+      213: -493087265523352935
+    second: Ninja_Spritesheet_14
+  - first:
+      213: -6042098036290587027
+    second: Ninja_Spritesheet_15
+  - first:
+      213: -7607296856353122255
+    second: Ninja_Spritesheet_16
+  - first:
+      213: -4734582501500761694
+    second: Ninja_Spritesheet_17
+  - first:
+      213: -682346621246359560
+    second: Ninja_Spritesheet_18
+  - first:
+      213: -7027907419870217833
+    second: Ninja_Spritesheet_19
+  - first:
+      213: 6714523893063444574
+    second: Ninja_Spritesheet_20
+  - first:
+      213: 4839492118045439329
+    second: Ninja_Spritesheet_21
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ninja_Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 602
+        width: 258
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73233855c47cd36c0800000000000000
+      internalID: -4161951349954366921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ninja_Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 597
+        width: 270
+        height: 370
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52153fc426df70b40800000000000000
+      internalID: 5406568476321206565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ninja_Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 597
+        width: 259
+        height: 370
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d8e18147af700290800000000000000
+      internalID: -7926194987836774188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ninja_Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 1723
+        y: 597
+        width: 263
+        height: 370
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bc9f5e5d836226d0800000000000000
+      internalID: -3016739341559948103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ninja_Spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 27
+        width: 498
+        height: 412
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd41a01ba03564de0800000000000000
+      internalID: -1349299732965878561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ninja_Spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 15
+        width: 361
+        height: 562
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 351ce5c63af994e10800000000000000
+      internalID: 2182451018684350803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ninja_Spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 1173
+        y: 17
+        width: 281
+        height: 361
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb1efc2fe7aa520d0800000000000000
+      internalID: -3448162477465935426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

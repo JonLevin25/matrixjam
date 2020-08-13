@@ -1,5 +1,3 @@
-using MatrixJam.Team;
-using MatrixJam.Team14;
 using UnityEngine;
 
 namespace MatrixJam.Team14

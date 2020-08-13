@@ -39,10 +39,14 @@ namespace MatrixJam.Team14
             return pos;
         }
         
-        public void Restart()
+        public void Restart(float beatOffset)
         {
-            _trackIdx = -1;
-            NextTrack();
+            // Wrap around
+            if (beatOffset < 0) beatOffset = trackList.GetTotalBeatCount() + beatOffset;
+
+            var (trackIdx, trackBeatOffset) = trackList.GetInfoFromGlobalBeat(beatOffset);
+            var trackSecsOffset = trackList[trackIdx].BeatsToSeconds(trackBeatOffset);
+            StartTrack(trackIdx, trackSecsOffset);
         }
         
         public void RestartLastCheckpoint()
@@ -65,17 +69,22 @@ namespace MatrixJam.Team14
         public Vector3[] GetTrackStartPositions(Transform startAndDirection)
             => trackList.GetTrackStarts(startAndDirection).ToArray();
 
-        private void StartTrack(int track)
+        private void StartTrack(int track, float secsOffset = 0f)
         {
             _trackIdx = track;
-            source.Stop();
-            source.clip = trackList.GetClip(_trackIdx);
-            source.Play();
-            railwaySource.Stop();
-            railwaySource.clip = trackList.GetRailway(_trackIdx);
-            railwaySource.Play();
+            
+            RestartPlayAudio(source, trackList.GetClip(_trackIdx), secsOffset);
+            RestartPlayAudio(railwaySource, trackList.GetRailway(_trackIdx), secsOffset);
         }
-        
+
+        private void RestartPlayAudio(AudioSource source, AudioClip clip, float secsOffset = 0f)
+        {
+            source.Stop();
+            source.clip = clip;
+            source.time = secsOffset;
+            source.Play();
+        }
+
         private void NextTrack()
         {
             Debug.Log($"NextTrack ({_trackIdx} -> {_trackIdx+1})");

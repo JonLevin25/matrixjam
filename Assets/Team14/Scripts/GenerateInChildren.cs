@@ -30,6 +30,7 @@ namespace MatrixJam.Team14
 
         public void Generate()
         {
+#if UNITY_EDITOR
             var userConfirm = EditorUtility.DisplayDialog("Confirm Delete",
                 $"Generating will destory current children of {name}", "Continue", "Cancel");
 
@@ -45,6 +46,7 @@ namespace MatrixJam.Team14
                 var instance = (GameObject) PrefabUtility.InstantiatePrefab(prefab, transform);
                 instance.transform.position = pos;
             }
+#endif
         }
     }
 }

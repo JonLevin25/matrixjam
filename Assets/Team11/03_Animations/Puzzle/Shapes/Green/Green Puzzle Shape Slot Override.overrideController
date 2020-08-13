@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Green Puzzle Shape Slot Override
+  m_Controller: {fileID: 9100000, guid: 11a41d976477d034ebd0f98104b09765, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 347ad933ea412cc46a2f6f3f0a0a0e16, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c8af1dfddebd30949a67c3ae21f877c2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a5d56d569f88d024ca1ba50aced4faa8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c6b25639dafc6c746a738ad5a7cdbe9b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 16ebab60b2b15da4fad78442241c1116, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cec78b7c316e7954a872b27bfe268efc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 65cb29dc5c462ed459e4b09f1a2fc988, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c43a07811a65fcf46b55e48dbfda8041, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6938611afc635954d8858f60934b7fa9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 20ff7e9cdc989c846a9632d21de0b0e4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c72272f7a3136fe438f3b99ede899789, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e4cf2b0bd6b8555459ca035d389e350b, type: 2}

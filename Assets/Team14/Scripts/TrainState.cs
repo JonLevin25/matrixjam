@@ -11,10 +11,11 @@ namespace MatrixJam.Team14
         public abstract string AnimTrigger { get; }
         public abstract TrainMove? Move { get; }
         public abstract bool AllowSelfTransition { get; }
+        public abstract bool PlaySFXOnEnter { get; }
 
         public virtual void OnEnter()
         {
-            if (Move != null)
+            if (PlaySFXOnEnter && Move != null)
                 TrainController.Instance.PlaySFX(Move.Value);
         }
 
@@ -28,10 +29,10 @@ namespace MatrixJam.Team14
 
         public override string ToString() => $"[TrainState] {Name}";
 
-        protected bool HandleJump() => HandleMoveTransition(TrainMove.Jump, TrainController.JumpState);
-        protected bool HandleDuck() => HandleMoveTransition(TrainMove.Duck, TrainController.DuckState);
+        protected bool HandleJump() => HandleMoveTransition(TrainMove.Jump, TrainController.JumpState, true);
+        protected bool HandleDuck() => HandleMoveTransition(TrainMove.Duck, TrainController.DuckState, true);
         protected bool HandleDuckHold() => HandleMoveHold(TrainMove.Duck, TrainController.DriveState);
-        protected bool HandleHonk() => HandleMoveTransition(TrainMove.Honk, TrainController.HonkState);
+        protected bool HandleHonk() => HandleMoveTransition(TrainMove.Honk, TrainController.HonkState, true);
         
         // protected bool HandleHonk()
         // {
@@ -44,11 +45,11 @@ namespace MatrixJam.Team14
         // }
 
 
-        private bool HandleMoveTransition(TrainMove move, TrainState state)
+        private bool HandleMoveTransition(TrainMove move, TrainState state, bool immediate = false)
         {
             var playerPressed = TrainMoves.GetKeyDown(move);
             if (playerPressed)
-                TransitionWithMove(move, state);
+                TransitionWithMove(move, state, immediate);
 
             return playerPressed;
         }
@@ -56,16 +57,25 @@ namespace MatrixJam.Team14
         private bool HandleMoveHold(TrainMove move, TrainState stateOnRelease)
         {
             var playerReleased = TrainMoves.GetKeyRelease(move);
-                if (playerReleased)
+            if (playerReleased)
                 TrainController.TransitionState(stateOnRelease, null);
             
             return playerReleased;
         }
 
-        private void TransitionWithMove(TrainMove move, TrainState state)
+        private void TransitionWithMove(TrainMove move, TrainState state, bool immediate = false)
         {
             var obstacle = Obstacle.HandleMovePressed(move);
-            TrainController.TransitionState(state, obstacle ? obstacle.MoveCue : null);
+
+            var moveCue = GetMoveCue(obstacle, immediate); 
+            TrainController.TransitionState(state, moveCue);
+        }
+
+        private static Transform GetMoveCue(Obstacle obstacle, bool transitionImmediate)
+        {
+            if (transitionImmediate) return null;
+            if (!obstacle) return null;
+            return obstacle.MoveCue;
         }
     }
 
@@ -99,6 +109,7 @@ namespace MatrixJam.Team14
 
     public class TrainDriveState : TrainState
     {
+        public override bool PlaySFXOnEnter => true;
         public override string Name => "Drive";
         public override string AnimTrigger => "Idle";
         public override TrainMove? Move => null;
@@ -116,6 +127,7 @@ namespace MatrixJam.Team14
     
     public class TrainHonkState : AutoExitTrainState
     {
+        public override bool PlaySFXOnEnter => true;
         public override string Name => "Honk";
         public override string AnimTrigger => "Honk";
         public override TrainMove? Move => TrainMove.Honk;
@@ -124,7 +136,13 @@ namespace MatrixJam.Team14
         public TrainHonkState(float timeToExit, TrainState autoExitState) : base(timeToExit, autoExitState)
         {
         }
-        
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            TrainController.Instance.Thomas.WeirdAnim(3f);
+        }
+
         public override void OnUpdate()
         {
             base.OnUpdate();
@@ -137,6 +155,7 @@ namespace MatrixJam.Team14
 
     public class TrainJumpState : AutoExitTrainState
     {
+        public override bool PlaySFXOnEnter => true;
         public override string Name => "Jump";
         public override string AnimTrigger => "Jump";
         public override TrainMove? Move => TrainMove.Jump;
@@ -145,6 +164,13 @@ namespace MatrixJam.Team14
         public TrainJumpState(float timeToExit, TrainState autoExitState) : base(timeToExit, autoExitState)
         {
         }
+        
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            TrainController.Instance.Thomas.HappyAnim(1.8f);
+        }
+        
         public override void OnUpdate()
         {
             base.OnUpdate();
@@ -156,6 +182,7 @@ namespace MatrixJam.Team14
 
     public class TrainDuckState : TrainState
     {
+        public override bool PlaySFXOnEnter => true;
         public override string Name => "Duck";
         public override string AnimTrigger => "Duck";
         public override TrainMove? Move => TrainMove.Duck;
@@ -172,6 +199,7 @@ namespace MatrixJam.Team14
 
     public class TrainNullState : TrainState
     {
+        public override bool PlaySFXOnEnter => false;
         public override string Name => "NONE";
         public override string AnimTrigger => null;
         public override TrainMove? Move => null;

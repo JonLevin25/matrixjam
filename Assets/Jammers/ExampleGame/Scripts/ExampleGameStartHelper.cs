@@ -9,6 +9,7 @@ public class ExampleGameStartHelper : StartHelper
     public override void StartHelp(int num_ent)
     {
         // this is how the game starts
+        base.StartHelp(num_ent);
     }
     
     // Start is called before the first frame update

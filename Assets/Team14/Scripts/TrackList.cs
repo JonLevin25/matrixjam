@@ -36,7 +36,7 @@ namespace MatrixJam.Team14
             {
                 var track = tracks[i];
                 for (var beatNum = 0; beatNum < Mathf.FloorToInt(track.TotalBeats); beatNum++)
-                    yield return track.GetPosition(startAndDirection, beatNum, offset);
+                    yield return track.BeatsToPosition(startAndDirection, beatNum, offset);
 
                 offset += track.GetLastPosition(startAndDirection);
             }
@@ -58,7 +58,7 @@ namespace MatrixJam.Team14
             var offset = Vector3.zero;
             foreach (var track in tracks)
             {
-                yield return track.GetPosition(startAndDirection, 0f, offset);
+                yield return track.BeatsToPosition(startAndDirection, 0f, offset);
                 offset = track.GetLastPosition(startAndDirection);
             }
         }
@@ -67,7 +67,7 @@ namespace MatrixJam.Team14
 
         public AudioClip GetClip(int trackIdx) => tracks[trackIdx].Clip;
 
-        // public float BeatsInTrack(int trackIdx) => tracks[trackIdx].TotalBeats;
+        public float BeatsInTrack(int trackIdx) => tracks[trackIdx].TotalBeats;
 
         // public float GetBeatNum(int trackIdx, float secsInTrack) => tracks[trackIdx].GetBeatNum(secsInTrack);
         public AudioClip GetRailway(int trackIdx) => tracks[trackIdx].RailwaySFX;
@@ -83,7 +83,7 @@ namespace MatrixJam.Team14
             
             var currTrack = tracks[trackIdx];
             var beatNum = currTrack.GetBeatNum(trackSecs);
-            var currTrackPos = currTrack.GetPosition(startAndDirection, beatNum);
+            var currTrackPos = currTrack.BeatsToPosition(startAndDirection, beatNum);
 
             return offset + currTrackPos;
         }
@@ -104,6 +104,21 @@ namespace MatrixJam.Team14
             return trackIdx;
         }
 
+        public float GetTotalBeatCount() => tracks.Sum(track => track.TotalBeats);
+
+        public (int trackIdx, float trackBeatNum) GetInfoFromGlobalBeat(float globalBeatNum)
+        {
+            var remainingBeats = globalBeatNum;
+            for (var trackIdx = 0; trackIdx < tracks.Length; trackIdx++)
+            {
+                var track = tracks[trackIdx];
+                if (track.TotalBeats > remainingBeats) return (trackIdx, remainingBeats);
+                remainingBeats -= track.TotalBeats;
+            }
+
+            throw new ArgumentException($"Beat {globalBeatNum} was not found!");
+        }
+
         public Vector3 GetBeatPositionWithGlobalBeat(Transform startAndDirection, float beatNum)
         {
             var trackIdx = 0;
@@ -120,7 +135,7 @@ namespace MatrixJam.Team14
 
             var trackBeat = beatNum - beatOffset;
 
-            return tracks[trackIdx].GetPosition(startAndDirection, trackBeat, posOffset);
+            return tracks[trackIdx].BeatsToPosition(startAndDirection, trackBeat, posOffset);
         }
 
         public Vector3 GetPositionWithGlobalTime(Transform startAndDirection, float totalSeconds)

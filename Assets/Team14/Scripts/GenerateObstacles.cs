@@ -49,6 +49,7 @@ namespace MatrixJam.Team14
 
         public void Generate()
         {
+#if UNITY_EDITOR
             var obstacleDatas = Parse(inputStr);
 
             foreach (var child in transform.Cast<Transform>().ToArray())
@@ -67,6 +68,8 @@ namespace MatrixJam.Team14
                 var track = trackList[trackIdx];
                 obstacleGen.SetParams(track);
             }
+            
+#endif
         }
         
         private static IEnumerable<ObstacleData> Parse(string str) 
