@@ -7,6 +7,7 @@ namespace MatrixJam.Team10
     public class Script2Animate : MonoBehaviour
     {
         public Animator animator;
+        public GameObject steps;
 
         private bool down, left, up, right;
 
@@ -46,22 +47,27 @@ namespace MatrixJam.Team10
             if (down)
             {
                 animator.SetTrigger("Foward");
+                steps.SetActive(true);
             }
             else if (up)
             {
                 animator.SetTrigger("Backwards");
+                steps.SetActive(true);
             }
             else if (left)
             {
                 animator.SetTrigger("Left");
+                steps.SetActive(true);
             }
             else if (right)
             {
                 animator.SetTrigger("Right");
+                steps.SetActive(true);
             }
             if(!(left || right || up || down))
             {
                 animator.SetTrigger("Idel");
+                steps.SetActive(false);
             }
         }
     }

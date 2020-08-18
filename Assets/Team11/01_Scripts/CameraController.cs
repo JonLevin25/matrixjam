@@ -17,7 +17,7 @@ namespace MatrixJam.Team11
         // Start is called before the first frame update
         void Start()
         {
-            Invoke("EnableCameraControls" ,1f);
+            Invoke("EnableCameraControls" ,0.5f);
         }
 
         void EnableCameraControls()

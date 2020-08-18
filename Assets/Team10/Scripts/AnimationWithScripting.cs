@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MatrixJam.Team10
 {
-    public class AnimationWithScripting : MonoBehaviour
+    public class animationwithscripting : MonoBehaviour
     {
         // Start is called before the first frame update
         void Start()

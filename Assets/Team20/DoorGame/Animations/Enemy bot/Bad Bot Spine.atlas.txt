@@ -1,0 +1,27 @@
+
+Bad Bot Spine.png
+size: 478,478
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Arm 1
+  rotate: false
+  xy: 213, 355
+  size: 263, 121
+  orig: 263, 121
+  offset: 0, 0
+  index: -1
+Arm 2
+  rotate: false
+  xy: 2, 414
+  size: 209, 62
+  orig: 209, 62
+  offset: 0, 0
+  index: -1
+Body
+  rotate: true
+  xy: 2, 143
+  size: 210, 464
+  orig: 210, 464
+  offset: 0, 0
+  index: -1

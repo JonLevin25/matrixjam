@@ -1,26 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MatrixJam.Team11
 {
-    public class SceneEntrance : MonoBehaviour
+    public class SceneEntrance : AbstractSceneEntrance
     {
         [SerializeField] bool isRedPill;
         [SerializeField] bool isBluePill;
 
         [SerializeReference] public GameScene TargetScene;
+        [SerializeField] public SceneTransition Transition = SceneTransition.Default;
 
-        private SceneManager _manager;
+        [SerializeField] protected UnityEvent OnEnter;
 
-        private void Awake()
+        protected override void Awake()
         {
-            this._manager = Object.FindObjectOfType<SceneManager>();
-
-            if (this._manager == null)
-            {
-                Debug.LogError($"{this.name}: SceneManager not found!");
-            }
+            base.Awake();
 
             if (this.TargetScene == null)
             {
@@ -30,25 +27,35 @@ namespace MatrixJam.Team11
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(isRedPill)
-            {
-                FindObjectOfType<MusicPlayer>().PlayRedPill();
-                FindObjectOfType<SunsetPlayerController>().canMove = false;
-            }
-            else if(isBluePill)
-            {
-                FindObjectOfType<MusicPlayer>().PlayBluePill();
-                FindObjectOfType<SunsetPlayerController>().canMove = false;
-            }
             this.Enter();
             this.gameObject.SetActive(false);
         }
 
-        public void Enter()
+        public override void Enter()
         {
+            if (this.OnEnter != null)
+            {
+                this.OnEnter.Invoke();
+            }
+
+            if (isRedPill)
+            {
+                FindObjectOfType<MusicPlayer>().PlayRedPill();
+            }
+            else if (isBluePill)
+            {
+                FindObjectOfType<MusicPlayer>().PlayBluePill();
+            }
+
+            if ((isRedPill || isBluePill)
+                && TryGetComponent<SunsetPlayerController>(out SunsetPlayerController player))
+            {
+                player.canMove = false;
+            }
+
             if (this.TargetScene != null)
             {
-                this._manager.GoToScene(this.TargetScene);
+                this._manager.GoToScene(this.TargetScene, this.Transition);
             }
         }
     }

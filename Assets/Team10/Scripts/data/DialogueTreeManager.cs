@@ -51,11 +51,11 @@ namespace MatrixJam.Team10
             dialogue = new DialogueTree();
             bool hasDialogues = randomDialogues.TryGetValue(room, out roomDialogues);
             System.Random rand = new System.Random();
-            int r = rand.Next(roomDialogues.Count*10);
+            int r = rand.Next(roomDialogues.Count*5);
             Debug.Log(r + "-" + roomDialogues.Count);
-            if(hasDialogues && roomDialogues.Count > 0 && r % 10 == 0){
-                dialogue = roomDialogues[r / 10];
-                roomDialogues.RemoveAt(r / 10);
+            if(hasDialogues && roomDialogues.Count > 0 && r % 5 == 0){
+                dialogue = roomDialogues[r / 5];
+                roomDialogues.RemoveAt(r / 5);
                 randomDialogues[room] = roomDialogues;
                 return true;
             }
@@ -173,7 +173,7 @@ namespace MatrixJam.Team10
                 "i dont want to meet my roommates, though",
                 "let me tell you, they can be quite annoying sometimes",
                 "well what should i do today?", 
-                "player movement: arrows + WASD \ninteractions: just move around in hope something happans or click stuff"};
+                "player movement: arrows + WASD \ninteractions: just move around in hope something happans \nor click stuff"};
             if(playerName == "42"){
                 sentences = sentences.Concat(new string[]{"now listen 42! it's a secret however this game is not as simple as it's seems",
                 "it's 2020, the year of the virus \nleave the house and you will get infected (lose)",

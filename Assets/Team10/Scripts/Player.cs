@@ -6,6 +6,7 @@ namespace MatrixJam.Team10
 {
     public class Player : MonoBehaviour
     {
+        public string name;
         public float speed;
         
         private Rigidbody2D myRigidBody;

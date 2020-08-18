@@ -70,4 +70,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d02180165caa46449c7c1d8ea867768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRedPill: 0
+  isBluePill: 0
   TargetScene: {fileID: 0}
+  Transition:
+    FadeOutTime: 1
+    FadeInTime: 3
+    FadedDuration: 2
+    FadeColor: {r: 1, g: 1, b: 1, a: 1}
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []

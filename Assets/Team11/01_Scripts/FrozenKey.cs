@@ -41,12 +41,19 @@ namespace MatrixJam.Team11
             iceCube.GetComponent<Animator>().SetTrigger("Crush");
             //TO_IDO: add ice shatter SFX
             SFXPlayer.instance.PlaySFX(SFXPlayer.instance.iceCrushSFX,0.8f);
+          //  FindObjectOfType<PlayerController>().IceCubeCrushed(iceCube.gameObject);
             Destroy(iceCube.GetComponent<LiftableObject>());
             Destroy(iceCube.GetComponent<Collider2D>());
             blueKey.transform.position = iceCube.transform.position;
             blueKey.SetActive(true);
-            Destroy(iceCube, 0.5f);
+            Invoke("TeleportIceCubeAway", 0.2f);
+           // Destroy(iceCube, 0.5f);
 
+        }
+
+        void TeleportIceCubeAway()
+        {
+            iceCube.transform.position = new Vector3(100, 100, 100);
         }
     }
 }

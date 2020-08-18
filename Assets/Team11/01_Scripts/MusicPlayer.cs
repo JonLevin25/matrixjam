@@ -7,7 +7,7 @@ namespace MatrixJam.Team11
     public class MusicPlayer : MonoBehaviour
     {
 
-        public AudioClip sunsetMusic, stingerMusic, hardGameLoop, ambienceLoop, normalGameLoop;
+        public AudioClip sunsetMusic, stingerMusic, finishMusic, hardGameLoop, ambienceLoop, normalGameLoop;
         AudioSource _audioSource;
 
 
@@ -65,7 +65,13 @@ namespace MatrixJam.Team11
         {
             _audioSource.Stop();
             _audioSource.PlayOneShot(sunsetMusic);
-         //   StartCoroutine(StartSequenceCoroutine());
+            //   StartCoroutine(StartSequenceCoroutine());
+        }
+
+        public void PlayFinish()
+        {
+            _audioSource.Stop();
+            _audioSource.PlayOneShot(finishMusic);
         }
 
         IEnumerator StartSequenceCoroutine()

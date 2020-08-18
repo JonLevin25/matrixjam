@@ -73,17 +73,20 @@ namespace MatrixJam.Team24
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                RaycastHit hit;
-                Ray ray = new Ray(player.transform.position, GetDir());
-                Physics.Raycast(ray, out hit, 3);
-                //print(hit.collider);
-                Attack(hit);
-                rnd.material.SetTexture(Shader.PropertyToID("_MainTex"), Anims.instance.protesterFlower.texture);
+                if(!movingLeft && !movingRight)
+                {
+                    RaycastHit hit;
+                    Ray ray = new Ray(player.transform.position, new Vector3(1f, 0, 0));
+                    Physics.Raycast(ray, out hit, 3);
+                    //print(hit.collider);
+                    Attack(hit);
+                    rnd.material.SetTexture(Shader.PropertyToID("_MainTex"), Anims.instance.protesterFlower.texture);
+                }
             }
             if(Input.GetKeyUp(KeyCode.Space))
                 rnd.material.SetTexture(Shader.PropertyToID("_MainTex"), Anims.instance.protesterIdle.texture);
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.LeftShift))
                     Instantiate(GM.instance.playerShot, new Vector3(transform.position.x + 2f, transform.position.y, transform.position.z), Quaternion.identity);
 
 
@@ -133,18 +136,13 @@ namespace MatrixJam.Team24
                 GetHit(Stats.officerDamage);
         }
 
-        private Vector3 GetDir()
-        {
-            if (pointingRight)
-                return new Vector3(1f, 0, 0);
-            else
-                return new Vector3(-1f, 0, 0);
-        }
+        
 
        public void Attack(RaycastHit hit)
        {
-            if (hit.collider)
+            if (hit.collider.gameObject.CompareTag("Tag2"))
             {
+                print("Melee police");
                 hit.collider.gameObject.GetComponent<Policeman>().GetHit(Stats.playerDamage);
             }
        }

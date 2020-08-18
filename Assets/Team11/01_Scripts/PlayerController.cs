@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,11 @@ namespace MatrixJam.Team11
 {
     public class PlayerController : MonoBehaviour
     {
+        private static readonly Color _inRangeDebugColor = new Color(0f, 0f, 1f, 0.5f);
+        private static readonly Color _relevantDebugColor = new Color(1f, 0f, 0f, 0.5f);
+        private static readonly Color _enterDebugColor = new Color(1f, 1f, 1f, 1f);
+        private static readonly Color _exitDebugColor = new Color(0f, 0f, 0f, 1f);
+
         [SerializeField] Canvas gameOverCanvas;
         [SerializeField] float movementSpeed;
         [SerializeField] Transform handTransform;
@@ -41,6 +47,8 @@ namespace MatrixJam.Team11
         public bool isDead = false;
         public bool wasHurt = false;
         public bool canMove = false;
+        bool levelFinished;
+        protected HashSet<GameObject> _objectAwareness;
      //   public bool canMoveVertically;
 
         Vector2 defaultColliderOffset;
@@ -71,7 +79,8 @@ namespace MatrixJam.Team11
             liftableObjectsInScene = FindObjectsOfType<LiftableObject>();
             interactableItemsInScene = FindObjectsOfType<InteractableItem>();*/
             _rigidbody = GetComponent<Rigidbody2D>();
-            FocusedObject = null;
+            this.FocusedObject = null;
+            this._objectAwareness = new HashSet<GameObject>();
             /* #outline
             _focusedObjectOutline = null;
             _isFocusOutlined = false;
@@ -81,7 +90,7 @@ namespace MatrixJam.Team11
         private void Awake()
         {
             canMove = false;
-            Invoke("DisableMovementLock", 1f); // stops player from moving during fade out so he won't miss the bubble tutorial message.
+            Invoke("DisableMovementLock", 0.5f); // stops player from moving during fade out so he won't miss the bubble tutorial message.
         }
 
         // Update is called once per frame
@@ -124,7 +133,7 @@ namespace MatrixJam.Team11
 
                 }*/
         }
-            else
+            else if(!levelFinished)
             {
                 horizontalInput = 0;
                 verticalInput = 0;
@@ -146,27 +155,23 @@ namespace MatrixJam.Team11
             {
                 TryPickUpItem();
             }*/
-            else if ((this.FocusedObject != null) && Input.GetKey(KeyCode.Space))
+            else if (this.FocusedObject != null)
             {
-                if (this.FocusedObject.TryGetComponent<InteractableItem>(out InteractableItem interactable))
+                if (this.FocusedObject.TryGetComponent<InteractableItem>(out InteractableItem interactable)
+                    && Input.GetKeyDown(KeyCode.Space))
                 {
                     if (interactable.canInteract)
                     {
                         interactable.Interact();
+                        this.SetFocusOn(null);
                     }
                 }
-                else if (this.FocusedObject.TryGetComponent<LiftableObject>(out LiftableObject liftable))
+                else if (this.FocusedObject.TryGetComponent<LiftableObject>(out LiftableObject liftable)
+                    && Input.GetKey(KeyCode.Space))
                 {
                     this.TryPickUpItem(liftable);
+                    this.SetFocusOn(null);
                 }
-                else
-                {
-                    Debug.LogError($"{name}: the focued object is rrelevant! ({FocusedObject})");
-                }
-                this.SetFocusOn(null);
-                /* #outline
-                this.SetFocuedOutline(false);
-                */
             }
 
             /* #scan
@@ -177,7 +182,7 @@ namespace MatrixJam.Team11
                     if (Vector2.Distance(transform.position, button.transform.position) < interactRadius || _collider.IsTouching(button.GetComponent<Collider2D>()))
                     {
                         currentButton = button;
-                        currentButton.Interact(); // TODO: <this
+                        currentButton.Interact();
                         break;
                     }
                 }
@@ -228,7 +233,7 @@ namespace MatrixJam.Team11
 
             if (obj != null)
             {
-                Debug.DrawLine(this.transform.position, obj.transform.position, Color.white, 1f);
+                Debug.DrawLine(this.transform.position, obj.transform.position, Color.white, 2f);
             }
         }
 
@@ -245,13 +250,15 @@ namespace MatrixJam.Team11
             }
         }
 
+        /* #bug_reinteract
         private void OnTriggerStay2D(Collider2D collision)
         {
+            Debug.DrawLine(this.transform.position, collision.transform.position, PlayerController._inRangeDebugColor, 1f);
             if (this.hasObjectInHands || !this.IsRelevant(collision.gameObject))
             {
                 return;
             }
-            Debug.DrawLine(this.transform.position, collision.transform.position, Color.red, 1f);
+            Debug.DrawLine(this.transform.position, collision.transform.position, PlayerController._relevantDebugColor, 0.5f);
 
             if (this.FocusedObject == null)
             {
@@ -275,12 +282,80 @@ namespace MatrixJam.Team11
                     this.SetFocusOn(collision.gameObject);
                 }
             }
+        }*/
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            Debug.DrawLine(this.transform.position, collision.transform.position, PlayerController._enterDebugColor, 3f);
+            this._objectAwareness.Add(collision.gameObject);
+
+            if(collision.gameObject.tag.Equals("Tag12"))
+            {
+                canMove = false;
+                levelFinished = true;
+
+                horizontalInput = 0;
+                verticalInput = 1;
+                _rigidbody.velocity = Vector2.up * movementSpeed;
+
+            }
         }
         private void OnTriggerExit2D(Collider2D collision)
         {
+            Debug.DrawLine(this.transform.position, collision.transform.position, PlayerController._exitDebugColor, 3f);
+            this._objectAwareness.Remove(collision.gameObject);
+            /* #bug_reinteract
             if (Object.ReferenceEquals(collision.gameObject, this.FocusedObject))
             {
                 this.SetFocusOn(null);
+            }*/
+        }
+
+        public bool ShouldFocusOn(GameObject obj)
+        {
+           // Debug.DrawLine(this.transform.position, obj.transform.position, PlayerController._inRangeDebugColor, 1f);
+            if (this.hasObjectInHands || !this.IsRelevant(obj))
+            {
+                return false;
+            }
+           // Debug.DrawLine(this.transform.position, obj.transform.position, PlayerController._relevantDebugColor, 0.5f);
+
+            if (this.FocusedObject == null)
+            {
+                return true;
+            }
+            else if (Object.ReferenceEquals(this.FocusedObject, obj) == false)
+            {
+                float currentFocusDistance = Vector2.Distance(
+                    this.transform.position,
+                    this.FocusedObject.transform.position
+                    );
+                float potantialFocusDistance = Vector2.Distance(
+                    this.transform.position,
+                    obj.transform.position
+                    );
+
+                //Debug.Log($"{this.name}: checking distances: {potantialFocusDistance} ?<? {currentFocusDistance}");
+
+                if (potantialFocusDistance < currentFocusDistance)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void FixedUpdate()
+        {
+            this.SetFocusOn(null);
+
+            foreach (GameObject obj in this._objectAwareness)
+            {
+                if (this.ShouldFocusOn(obj))
+                {
+                    this.SetFocusOn(obj);
+                }
             }
         }
 
@@ -295,7 +370,8 @@ namespace MatrixJam.Team11
         void TryPickUpItem(LiftableObject item)
         {
             objectInHands = item.gameObject;
-           // objectInHandsRB = item.GetComponent<Rigidbody2D>();
+            objectInHands.transform.localScale = transform.localScale;
+            // objectInHandsRB = item.GetComponent<Rigidbody2D>();
             objectInHands.GetComponent<LiftableObject>().isLifted = true;
             SFXPlayer.instance.PlaySFX(SFXPlayer.instance.pickUpSFX, 0.8f);
 
@@ -328,17 +404,14 @@ namespace MatrixJam.Team11
 
 
                     Physics2D.IgnoreCollision(_collider, objectInHands.GetComponent<Collider2D>(), true);
-                   // Physics2D.IgnoreCollision(liftingObjectCollider, objectInHands.GetComponent<Collider2D>(), true);
+                    // Physics2D.IgnoreCollision(liftingObjectCollider, objectInHands.GetComponent<Collider2D>(), true);
 
                 }
             }*/
         //*/
-    }
+        }
 
-
-
-
-    void CarryObject()
+        void CarryObject()
         {
             if(!Input.GetKey(KeyCode.Space))
             {
@@ -427,6 +500,11 @@ namespace MatrixJam.Team11
         {
             SFXPlayer.instance.PlaySwimSFX();
         }
+
+        /*public void IceCubeCrushed(GameObject cube)
+        {
+            this._objectAwareness.Remove(cube);
+        }*/
 
 
 
