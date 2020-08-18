@@ -42,9 +42,9 @@ namespace MatrixJam.Team14
         [SerializeField] private Transform character;
         [SerializeField] private ThomasMoon thomasMoon;
 
-        [Header("Infra")]
-        [SerializeField] private Exit winExit;
-        [SerializeField] private Exit loseExit;
+        // [Header("Infra")]
+        // [SerializeField] private Exit winExit;
+        // [SerializeField] private Exit loseExit;
 
         private bool reachedEnd;
         [SerializeField] private GameObject gameOver;
@@ -137,13 +137,13 @@ namespace MatrixJam.Team14
 
         private void MatrixExit(bool win, float delay)
         {
-            StartCoroutine(Routine());
-            IEnumerator Routine()
-            {
-                yield return new WaitForSeconds(delay);
-                var exit = win ? winExit : loseExit;
-                exit.EndLevel();
-            }
+            // StartCoroutine(Routine());
+            // IEnumerator Routine()
+            // {
+            //     yield return new WaitForSeconds(delay);
+            //     var exit = win ? winExit : loseExit;
+            //     exit.EndLevel();
+            // }
         }
 
         public void OnDeath()
