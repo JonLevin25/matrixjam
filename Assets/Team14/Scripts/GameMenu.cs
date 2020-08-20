@@ -19,6 +19,7 @@ public class GameMenu : MonoBehaviour
 {
     [Header("Config")]
     [SerializeField] private MenuType initMenu;
+    [SerializeField] private MenuType[] showOverlayIn;
     [SerializeField] private MenuType[] showCreditsIn;
     [SerializeField] private MenuType[] showRestartBtnIn;
     [SerializeField] private MenuType[] showResumeBtnIn;
@@ -27,6 +28,7 @@ public class GameMenu : MonoBehaviour
     [SerializeField] private MenuType[] showQuitGameBtnIn;
 
     [Header("hard-refs")]
+    [SerializeField] private GameObject overlay;
     [SerializeField] private GameObject resumeBtn;
     [SerializeField] private GameObject creditsBtn;
     [SerializeField] private GameObject restartBtn;
@@ -99,15 +101,22 @@ public class GameMenu : MonoBehaviour
         HideAll();
 
         var toShow = ObjectsToShow(menu);
-        foreach (var obj in toShow)
-            obj.SetActive(true);
         
-        ShowButtonConditional(title, showTitleIn);
-        ShowButtonConditional(resumeBtn, showResumeBtnIn);
-        ShowButtonConditional(creditsBtn, showCreditsIn);
-        ShowButtonConditional(restartBtn, showRestartBtnIn);
-        ShowButtonConditional(quitGameBtn, showQuitGameBtnIn);
-        ShowButtonConditional(quitToMenuBtn, showQuitToMenuBtnIn);
+        foreach (var obj in toShow)
+        {
+            try
+            {
+                obj.SetActive(true);
+            } catch(UnassignedReferenceException) { }
+        }
+        
+        ShowConditional(overlay, showOverlayIn);
+        ShowConditional(title, showTitleIn);
+        ShowConditional(resumeBtn, showResumeBtnIn);
+        ShowConditional(creditsBtn, showCreditsIn);
+        ShowConditional(restartBtn, showRestartBtnIn);
+        ShowConditional(quitGameBtn, showQuitGameBtnIn);
+        ShowConditional(quitToMenuBtn, showQuitToMenuBtnIn);
     }
 
     private void OnGameReset()
@@ -115,7 +124,7 @@ public class GameMenu : MonoBehaviour
         HideMenu();
     }
 
-    private void ShowButtonConditional(GameObject btn, IEnumerable<MenuType> menus)
+    private void ShowConditional(GameObject btn, IEnumerable<MenuType> menus)
     {
         var shouldShow = menus.Contains(CurrMenu);
         if (btn) btn.SetActive(shouldShow);
@@ -153,20 +162,27 @@ public class GameMenu : MonoBehaviour
 
     private GameObject[] ObjectsToShow(MenuType menu)
     {
-        switch (menu)
+        try
         {
-            case MenuType.None:
-                return new GameObject[0];
-            case MenuType.MainMenu:
-                return showInMain;
-            case MenuType.PauseMenu:
-                return showInPause;
-            case MenuType.LoseMenu:
-                return showInLose;
-            case MenuType.WinMenu:
-                return showInWin;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(menu), menu, null);
+            switch (menu)
+            {
+                case MenuType.None:
+                    return new GameObject[0];
+                case MenuType.MainMenu:
+                    return showInMain;
+                case MenuType.PauseMenu:
+                    return showInPause;
+                case MenuType.LoseMenu:
+                    return showInLose;
+                case MenuType.WinMenu:
+                    return showInWin;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(menu), menu, null);
+            }
+        }
+        catch (UnassignedReferenceException)
+        {
+            return new GameObject[0];
         }
     }
 
