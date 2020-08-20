@@ -61,6 +61,12 @@ public class GameMenu : MonoBehaviour
 
     private void Start() => GameManager.ResetEvent += OnGameReset;
 
+    private void Update()
+    {
+        if (CurrMenu == MenuType.MainMenu)
+            HandleMainMenuInput();
+    }
+
     private void OnDestroy() => GameManager.ResetEvent -= OnGameReset;
 
     private void OnEnable()
@@ -167,5 +173,14 @@ public class GameMenu : MonoBehaviour
         
         foreach (var obj in AllObjects)
             obj.SetActive(false);
+    }
+
+    private void HandleMainMenuInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            RestartGame();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            ExitGame();
     }
 }

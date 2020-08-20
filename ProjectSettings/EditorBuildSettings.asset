@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/TeamMeta/Scenes/MainMenu.unity
-    guid: cc4e329e877635244b275c90f8227e4f
+    path: Assets/Team14/ThomasMenuScene.unity
+    guid: 642aa2c27e2c94a4d8b4ff7f757d7c01
+  - enabled: 1
+    path: Assets/Team14/ThomasGameScene.unity
+    guid: 132e59a1a7174a745b3eb361fe446d59
   m_configObjects: {}
