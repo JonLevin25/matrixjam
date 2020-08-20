@@ -1051,12 +1051,12 @@ PrefabInstance:
     - target: {fileID: 1016413819835651651, guid: 5f641bd9de0258f4cacb3f89439260f0,
         type: 3}
       propertyPath: eyebrowsRandomDelta.y
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1016413819835651651, guid: 5f641bd9de0258f4cacb3f89439260f0,
         type: 3}
       propertyPath: animationDelay.secsDelay
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1016413819835651661, guid: 5f641bd9de0258f4cacb3f89439260f0,
         type: 3}
