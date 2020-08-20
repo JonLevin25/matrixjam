@@ -1566,6 +1566,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ade8957bd13e38649af672816c01c745, type: 3}
+--- !u!114 &391438501 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8526599249453034106, guid: ade8957bd13e38649af672816c01c745,
+    type: 3}
+  m_PrefabInstance: {fileID: 391438500}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a63c108cc60dd844aa619e79630a7e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &410953071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6851214412888300992, guid: 06ea9d8e8d244a84294b25b0dbf6ab08,
@@ -6481,8 +6493,8 @@ MonoBehaviour:
   sfxManager: {fileID: 421545693}
   startAndDirection: {fileID: 2007410411}
   character: {fileID: 651679344}
-  thomasMoon: {fileID: 0}
-  menu: {fileID: 0}
+  thomasMoon: {fileID: 195940498}
+  menu: {fileID: 391438501}
 --- !u!4 &1907177324
 Transform:
   m_ObjectHideFlags: 0

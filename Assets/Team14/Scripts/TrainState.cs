@@ -118,6 +118,7 @@ namespace MatrixJam.Team14
         public override void OnUpdate()
         {
             base.OnUpdate();
+            if (GameManager.Instance.BlockInput) return;
             
             HandleHonk();
             if (HandleDuck()) return;
@@ -146,6 +147,7 @@ namespace MatrixJam.Team14
         public override void OnUpdate()
         {
             base.OnUpdate();
+            if (GameManager.Instance.BlockInput) return;
             if (HandleHonk()) return;
             // Don't allow transition to jump/honk during    
             // if (HandleJump()) return;
@@ -174,6 +176,7 @@ namespace MatrixJam.Team14
         public override void OnUpdate()
         {
             base.OnUpdate();
+            if (GameManager.Instance.BlockInput) return;
             
             // if (HandleHonk()) return;
             if (HandleDuck()) return;
@@ -191,6 +194,8 @@ namespace MatrixJam.Team14
         public override void OnUpdate()
         {
             base.OnUpdate();
+            if (GameManager.Instance.BlockInput) return;
+            
             if (HandleJump()) return;
             if (HandleHonk()) return;
             HandleDuckHold();

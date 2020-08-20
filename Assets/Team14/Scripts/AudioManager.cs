@@ -115,5 +115,11 @@ namespace MatrixJam.Team14
 
             return timeOffset + source.time;
         }
+
+        public void Pause(bool pause)
+        {
+            if (pause) source.Pause();
+            else source.UnPause();
+        }
     }
 }

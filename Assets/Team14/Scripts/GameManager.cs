@@ -40,7 +40,8 @@ namespace MatrixJam.Team14
         [SerializeField] private Transform startAndDirection;
 
         [SerializeField] private Transform character;
-        [SerializeField] private ThomasMoon thomasMoon;
+
+        public bool BlockInput { get; private set; }
 
         // [Header("Infra")]
         // [SerializeField] private Exit winExit;
@@ -60,6 +61,7 @@ namespace MatrixJam.Team14
 
         private void Awake()
         {
+            menu.OnResume += OnGameResume;
             sfxManager = FindObjectOfType<SFXmanager>();
             if (Instance != null)
             {
@@ -92,24 +94,28 @@ namespace MatrixJam.Team14
         {
             if (secretRestartCombo.Length > 0 && secretRestartCombo.All(Input.GetKey)) RestartLevel();
             if (reachedEnd) return;
+
+            if (Input.GetKeyDown(KeyCode.Escape)) HandleEscape();
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) HandleSubmit();
             
             var pos = audioManager.GetCurrPosition(startAndDirection);
             character.position = pos;
+        }
+
+        private void OnDestroy()
+        {
+            menu.OnResume -= OnGameResume;
+            audioManager.OnFinishTrack -= OnTrackFinished;
+            audioManager.OnFinishTracklist -= OnTrackListFinished;
+            
+            if (Instance != this) return;
+            Instance = null;
         }
 
         private void RestartLevel()
         {
             var sceneName = UnityEngine.SceneManagement.SceneManager.GetSceneAt(0).name;
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
-        }
-
-        private void OnDestroy()
-        {
-            audioManager.OnFinishTrack -= OnTrackFinished;
-            audioManager.OnFinishTracklist -= OnTrackListFinished;
-            
-            if (Instance != this) return;
-            Instance = null;
         }
 
         public static float GetTimeinTracklist() => Instance.audioManager.GetCurrGlobalSecs();
@@ -122,7 +128,7 @@ namespace MatrixJam.Team14
         private void OnTrackListFinished()
         {
             reachedEnd = true;
-            menu.ShowMenu(GameMenu.MenuType.WinMenu);
+            menu.ShowMenu(MenuType.WinMenu);
             GameFinishedEvent?.Invoke(true);
             
             MatrixExit(true, 8);
@@ -147,6 +153,57 @@ namespace MatrixJam.Team14
             // }
         }
 
+        private void OnGameResume()
+        {
+            Pause(false, handleMenu: false);
+        }
+
+        private void HandleEscape()
+        {
+            switch (menu.CurrMenu)
+            {
+                case MenuType.MainMenu:
+                    break;
+                
+                case MenuType.LoseMenu:
+                case MenuType.WinMenu:
+                    menu.ExitToMenu();
+                    break;
+                
+                case MenuType.None:
+                    Pause(true);
+                    break;
+                case MenuType.PauseMenu:
+                    Pause(false);
+                    break;
+                    
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private void HandleSubmit()
+        {
+            switch (menu.CurrMenu)
+            {
+                case MenuType.MainMenu:
+                    break;
+                
+                case MenuType.None:
+                case MenuType.LoseMenu:
+                case MenuType.WinMenu:
+                    // CHoo CHHOOO
+                    break;
+                
+                case MenuType.PauseMenu:
+                    menu.HideMenu();
+                    break;
+                    
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         public void OnDeath()
         {
             GameOverExplosive.Explode();
@@ -163,6 +220,18 @@ namespace MatrixJam.Team14
 
         }
 
+        private void Pause(bool pause, bool handleMenu = true)
+        {
+            if (handleMenu)
+            {
+                var menuType = pause ? MenuType.PauseMenu : MenuType.None;
+                menu.ShowMenu(menuType);
+            }
+
+            audioManager.Pause(pause);
+            BlockInput = pause;
+        }
+
         private void DoDeath()
         {
             Debug.Log("StopExplosion");
@@ -175,7 +244,7 @@ namespace MatrixJam.Team14
         {
             Debug.Log("GAME OVERRR");
             sfxManager.Lose.PlayRandom();
-            menu.ShowMenu(GameMenu.MenuType.LoseMenu);
+            menu.ShowMenu(MenuType.LoseMenu);
             GameFinishedEvent?.Invoke(false);
             MatrixExit(false, 8f);
         }

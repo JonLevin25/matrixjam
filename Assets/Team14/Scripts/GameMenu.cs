@@ -5,17 +5,18 @@ using MatrixJam.Team14;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum MenuType
+{
+    None,
+    MainMenu,
+    PauseMenu,
+    LoseMenu,
+    WinMenu
+}
+
+
 public class GameMenu : MonoBehaviour
 {
-    public enum MenuType
-    {
-        None,
-        MainMenu,
-        PauseMenu,
-        LoseMenu,
-        WinMenu
-    }
-
     [Header("Config")]
     [SerializeField] private MenuType initMenu;
     [SerializeField] private MenuType[] showCreditsIn;
@@ -42,6 +43,8 @@ public class GameMenu : MonoBehaviour
     [SerializeField] private GameObject[] showInLose;
     [SerializeField] private GameObject[] showInWin;
 
+    public event Action OnResume;
+
     public MenuType CurrMenu { get; private set; }
 
     private IEnumerable<GameObject[]> AllObjectArrays
@@ -59,7 +62,11 @@ public class GameMenu : MonoBehaviour
         .SelectMany(x => x)
         .Where(x => x != null);
 
-    private void Start() => GameManager.ResetEvent += OnGameReset;
+    private void Start()
+    {
+        GameManager.ResetEvent += OnGameReset;
+        ShowMenu(initMenu);
+    }
 
     private void Update()
     {
@@ -69,17 +76,13 @@ public class GameMenu : MonoBehaviour
 
     private void OnDestroy() => GameManager.ResetEvent -= OnGameReset;
 
-    private void OnEnable()
-    {
-        ShowMenu(initMenu);
-    }
-
     public void ShowMenu(MenuType menu)
     {
         Debug.Log(nameof(ShowMenu) + $"({menu})");
         var shouldPause = menu == MenuType.PauseMenu;
         Time.timeScale = shouldPause ? 0f : 1f;
         
+        if (CurrMenu == MenuType.PauseMenu && menu == MenuType.None) OnResume?.Invoke();
         CurrMenu = menu;
         if (menu == MenuType.None)
         {
