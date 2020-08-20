@@ -5,6 +5,32 @@ using MatrixJam.Team14;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+#if UNITY_EDITOR
+using UnityEditor;
+
+[CustomEditor(typeof(GameMenu))]
+public class GameMenuEditor : Editor
+{
+    private MenuType _testMenu;
+    
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+        
+        EditorGUILayout.Space(40f);
+        EditorGUILayout.LabelField("Test", EditorStyles.boldLabel);
+        var script = (GameMenu) target;
+        
+        _testMenu = (MenuType) EditorGUILayout.EnumPopup(_testMenu);
+
+        if (GUILayout.Button("Test Show Menu"))
+        {
+            script.ShowMenu(_testMenu);
+        }
+    }
+}
+#endif
+
 public enum MenuType
 {
     None,
@@ -82,7 +108,7 @@ public class GameMenu : MonoBehaviour
     {
         Debug.Log(nameof(ShowMenu) + $"({menu})");
         var shouldPause = menu == MenuType.PauseMenu;
-        Time.timeScale = shouldPause ? 0f : 1f;
+        if (Application.isPlaying) Time.timeScale = shouldPause ? 0f : 1f;
         
         if (CurrMenu == MenuType.PauseMenu && menu == MenuType.None) OnResume?.Invoke();
         CurrMenu = menu;
