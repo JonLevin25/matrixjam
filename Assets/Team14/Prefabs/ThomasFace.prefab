@@ -252,10 +252,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8934581275170108583}
+  - component: {fileID: 1084806025}
   - component: {fileID: 8934581275170108582}
   - component: {fileID: 8934581275170108585}
   - component: {fileID: 5858507754474127941}
-  - component: {fileID: 1084806025}
   m_Layer: 5
   m_Name: ThomasFace
   m_TagString: Untagged
@@ -284,6 +284,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1084806025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934581275170108580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e9176272c0c3443a52cae5ef057ba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  viewportPos: {x: 0.94, y: 0.91, z: 10}
+  setOnStart: 1
+  setOnUpdate: 0
 --- !u!212 &8934581275170108582
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -350,6 +366,7 @@ MonoBehaviour:
   eyebrowsAnim: 1
   weirdFaceAnim: 1
   happyAnim: 1
+  lookaheadPos: {fileID: 0}
   lookLerpSpeed: 0.3
   animationDelay:
     resetEveryRestart: 0
@@ -385,20 +402,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1084806025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8934581275170108580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33e9176272c0c3443a52cae5ef057ba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  viewportPos: {x: 0.94, y: 0.91, z: 10}
 --- !u!1 &8934581275620946786
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,8 +47,9 @@ namespace MatrixJam.Team14
         // [SerializeField] private Exit loseExit;
 
         private bool reachedEnd;
-        [SerializeField] private GameObject gameOver;
-        [SerializeField] private GameObject youWin;
+        [SerializeField] private GameMenu menu;
+        // [SerializeField] private GameObject gameOver;
+        // [SerializeField] private GameObject youWin;
         
         public static GameManager Instance { get; private set; }
 
@@ -121,7 +122,7 @@ namespace MatrixJam.Team14
         private void OnTrackListFinished()
         {
             reachedEnd = true;
-            youWin.SetActive(true);
+            menu.ShowMenu(GameMenu.MenuType.WinMenu);
             GameFinishedEvent?.Invoke(true);
             
             MatrixExit(true, 8);
@@ -174,7 +175,7 @@ namespace MatrixJam.Team14
         {
             Debug.Log("GAME OVERRR");
             sfxManager.Lose.PlayRandom();
-            gameOver.SetActive(true);
+            menu.ShowMenu(GameMenu.MenuType.LoseMenu);
             GameFinishedEvent?.Invoke(false);
             MatrixExit(false, 8f);
         }
