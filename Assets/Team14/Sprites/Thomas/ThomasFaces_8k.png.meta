@@ -1,46 +1,31 @@
 fileFormatVersion: 2
-guid: df86ce3c2f577b140999762399523c06
+guid: 9c00120ae4305d444a7b8fe6839e72f2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1333503295555322010
-    second: ThomasHappy_0
+      213: -6575667576091093489
+    second: 8k_ThomasHappy_0
   - first:
-      213: 2285195471658370708
-    second: ThomasHappy_0
+      213: -6999131481622232260
+    second: 8k_ThomasHappy_1
   - first:
-      213: -8328704608452246534
-    second: ThomasHappy_1
+      213: -5327200258339938150
+    second: 8k_ThomasHappy_2
   - first:
-      213: -2022538310702290499
-    second: ThomasHappy_2
+      213: -3288086586375175661
+    second: 8k_ThomasHappy_3
   - first:
-      213: -3651427236976210110
-    second: ThomasHappy_3
+      213: 3020589006858377195
+    second: 8k_ThomasHappy_NOEYEBROWS
   - first:
-      213: -4931435040800617912
-    second: ThomasWeird
+      213: 1862013366692255138
+    second: ThomasFaces_8k_5
   - first:
-      213: 2285195471658370708
-    second: ThomasHappy_0
+      213: -473713610091475024
+    second: ThomasFaces_8k_6
   - first:
-      213: -7433983753427532690
-    second: ThomasFaces_1
-  - first:
-      213: 8381801741199074597
-    second: ThomasFaces_2
-  - first:
-      213: -5348960475538597081
-    second: ThomasFaces_3
-  - first:
-      213: -1409887069092966300
-    second: ThomasFaces_4
-  - first:
-      213: 8805443082558481572
-    second: ThomasFaces_5
-  - first:
-      213: 1333503295555322010
-    second: ThomasHappy_0
+      213: 7216424731187386014
+    second: 8k_ThomasWeird
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -84,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 23.5
+  spritePixelsToUnits: 221.16435
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -162,13 +147,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ThomasHappy_0
+      name: 8k_ThomasHappy_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 230
-        width: 203
-        height: 208
+        y: 2159
+        width: 1933
+        height: 1935
       alignment: 9
       pivot: {x: 0.75, y: 0.8}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 496478a8c25a6bf10800000000000000
-      internalID: 2285195471658370708
+      spriteID: f06590ecd298eb4a0800000000000000
+      internalID: -6575667576091093489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThomasHappy_1
+      name: 8k_ThomasHappy_1
       rect:
         serializedVersion: 2
-        x: 214
-        y: 230
-        width: 203
-        height: 208
+        x: 2046
+        y: 2154
+        width: 1933
+        height: 1935
       alignment: 9
       pivot: {x: 0.75, y: 0.8}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af38b06394f7a6c80800000000000000
-      internalID: -8328704608452246534
+      spriteID: c3347ad10071ede90800000000000000
+      internalID: -6999131481622232260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThomasHappy_2
+      name: 8k_ThomasHappy_2
       rect:
         serializedVersion: 2
-        x: 432
-        y: 230
-        width: 203
-        height: 208
+        x: 4124
+        y: 2160
+        width: 1933
+        height: 1935
       alignment: 9
       pivot: {x: 0.75, y: 0.8}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +203,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db9a8fd4f108ee3e0800000000000000
-      internalID: -2022538310702290499
+      spriteID: a90674af69bf116b0800000000000000
+      internalID: -5327200258339938150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThomasHappy_3
+      name: 8k_ThomasHappy_3
       rect:
         serializedVersion: 2
-        x: 656
-        y: 230
-        width: 203
-        height: 208
+        x: 6252
+        y: 2163
+        width: 1933
+        height: 1935
       alignment: 9
       pivot: {x: 0.75, y: 0.8}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,20 +224,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24fc8d82646835dc0800000000000000
-      internalID: -3651427236976210110
+      spriteID: 3128164bbae5e52d0800000000000000
+      internalID: -3288086586375175661
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThomasWeird
+      name: 8k_ThomasHappy_NOEYEBROWS
       rect:
         serializedVersion: 2
-        x: 656
+        x: 4
+        y: 15
+        width: 1933
+        height: 1935
+      alignment: 9
+      pivot: {x: 0.75, y: 0.8}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be75e3ea2b94be920800000000000000
+      internalID: 3020589006858377195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 8k_ThomasWeird
+      rect:
+        serializedVersion: 2
+        x: 6234
         y: 0
-        width: 203
-        height: 207
+        width: 1933
+        height: 1935
       alignment: 9
       pivot: {x: 0.75, y: 0.8}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,29 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84a4a2055f5009bb0800000000000000
-      internalID: -4931435040800617912
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ThomasHappy_NO_EYEBROWS
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2
-        width: 203
-        height: 208
-      alignment: 9
-      pivot: {x: 0.75, y: 0.8}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a90436e9e2e818210800000000000000
-      internalID: 1333503295555322010
+      spriteID: e9694ca0f04e52460800000000000000
+      internalID: 7216424731187386014
       vertices: []
       indices: 
       edges: []
@@ -290,7 +275,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c6a047221bdffc944a15dfa45e4979e6
+    spriteID: 8dd805459cfa6ba4685e4b23335d0c37
     internalID: 0
     vertices: []
     indices: 
