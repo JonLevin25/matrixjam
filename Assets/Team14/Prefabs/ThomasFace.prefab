@@ -374,7 +374,7 @@ MonoBehaviour:
   eyebrowsRandomDelta: {x: 10, y: 17}
   cam: {fileID: 0}
   localEyeRadius: 0.45
-  scalePerSec: 0.01
+  scalePerSec: 0.005
   anim: {fileID: 5858507754474127941}
   faceSprite: {fileID: 8934581275170108582}
   leftEye: {fileID: 8934581276513075734}
