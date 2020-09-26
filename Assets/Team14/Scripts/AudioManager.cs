@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MatrixJam.Team14
 {
@@ -10,8 +11,11 @@ namespace MatrixJam.Team14
         [SerializeField] private AudioSource source;
         [SerializeField] private AudioSource railwaySource;
 
+        private bool _aboutToFinishTrack;
         private int _trackIdx;
         
+        private const float AboutToFinishTrackPercent = 0.8f;
+        private const string LogPrefix = nameof(AudioManager) + ":";
 
         public event Action<int> OnFinishTrack;
         public event Action OnFinishTracklist;
@@ -25,8 +29,22 @@ namespace MatrixJam.Team14
         
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                Debug.Log($"{LogPrefix} UPDATE: trackList: {trackList.TrackCount}. trackIdx: {_trackIdx}. srcTime: {source.time}. clipLen: {source.clip.length}. AboutToFinish: {_aboutToFinishTrack}");
+            }
+
+
+            // Fix for WebGL Wrapping around to 0f of audiosource when finishing track
+            // Seems first frame after "overflow" source continues (e.g. 0.015f) So need a short arbitrary lower bound.
+            // 1.5 is arbitrary but seems long enough to cover a spike of frame drops around track changing.
+            var glitchedToBeginning = _aboutToFinishTrack && source.time <  1.5f;
+            
+            if (glitchedToBeginning) Debug.Log($"{LogPrefix} GLITCHED TO BEGINNING!");
+            UpdateAboutToFinishFlag();
+            
             var donePlayingTrack = source.time >= source.clip.length;
-            if (donePlayingTrack) OnTrackFinishedInternal();
+            if (donePlayingTrack || glitchedToBeginning) OnTrackFinishedInternal();
         }
 
         public Vector3 GetCurrPosition(Transform startAndDirection)
@@ -38,9 +56,10 @@ namespace MatrixJam.Team14
             
             return pos;
         }
-        
+
         public void Restart(float beatOffset)
         {
+            Debug.Log($"{LogPrefix} {nameof(Restart)}()");
             // Wrap around
             if (beatOffset < 0) beatOffset = trackList.GetTotalBeatCount() + beatOffset;
 
@@ -48,9 +67,10 @@ namespace MatrixJam.Team14
             var trackSecsOffset = trackList[trackIdx].BeatsToSeconds(trackBeatOffset);
             StartTrack(trackIdx, trackSecsOffset);
         }
-        
+
         public void RestartLastCheckpoint()
         {
+            Debug.Log($"{LogPrefix} {nameof(RestartLastCheckpoint)}()");
             var lastTrackWithCheckpoint = trackList.Tracks
                 .Take(_trackIdx) // Check up until this index - was there "checkpoint after" prev tracks
                 .Select((track, i) => new {track, i})
@@ -66,35 +86,43 @@ namespace MatrixJam.Team14
 
         public Vector3[] GetTrackEndPositions(Transform startAndDirection)
             => trackList.GetTrackEndPositions(startAndDirection).ToArray();
+
         public Vector3[] GetTrackStartPositions(Transform startAndDirection)
             => trackList.GetTrackStarts(startAndDirection).ToArray();
 
         private void StartTrack(int track, float secsOffset = 0f)
         {
+            Debug.Log($"{LogPrefix} {nameof(StartTrack)}({track}, offset: {secsOffset})");
             _trackIdx = track;
             
             RestartPlayAudio(source, trackList.GetClip(_trackIdx), secsOffset);
             RestartPlayAudio(railwaySource, trackList.GetRailway(_trackIdx), secsOffset);
+            _aboutToFinishTrack = false;
         }
 
         private void RestartPlayAudio(AudioSource source, AudioClip clip, float secsOffset = 0f)
         {
+            Debug.Log($"{LogPrefix} {nameof(RestartPlayAudio)}");
             source.Stop();
             source.clip = clip;
             source.time = secsOffset;
             source.Play();
+            
+            UpdateAboutToFinishFlag();
         }
 
         private void NextTrack()
         {
-            Debug.Log($"NextTrack ({_trackIdx} -> {_trackIdx+1})");
+            Debug.Log($"{LogPrefix} NextTrack ({_trackIdx} -> {_trackIdx+1})");
             _trackIdx++;
             StartTrack(_trackIdx);
         }
 
         // TODO: GameManager: handle Events
+
         private void OnTrackFinishedInternal()
         {
+            Debug.Log($"{LogPrefix} {nameof(OnTrackFinishedInternal)}()");
             OnFinishTrack?.Invoke(_trackIdx);
             if (_trackIdx == trackList.TrackCount - 1) OnLastTrackFinished();
             else NextTrack();
@@ -102,6 +130,7 @@ namespace MatrixJam.Team14
 
         private void OnLastTrackFinished()
         {
+            Debug.Log($"{LogPrefix} {nameof(OnLastTrackFinished)}()");
             OnFinishTracklist?.Invoke();
         }
 
@@ -118,8 +147,18 @@ namespace MatrixJam.Team14
 
         public void Pause(bool pause)
         {
+            Debug.Log($"{LogPrefix} {nameof(Pause)}()");
             if (pause) source.Pause();
             else source.UnPause();
+        }
+
+        private void UpdateAboutToFinishFlag()
+        {
+            Assert.IsNotNull(source);
+            Assert.IsNotNull(source.clip);
+            
+            var progress = source.time / source.clip.length;
+            _aboutToFinishTrack = progress >= AboutToFinishTrackPercent;
         }
     }
 }
